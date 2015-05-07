@@ -30,41 +30,65 @@ class ReactTimer implements \React\EventLoop\Timer\TimerInterface
         $this->timer = $timer;
     }
 
+    /**
+     * @inheritdoc
+     */
     public function getLoop()
     {
         return $this->loop;
     }
 
+    /**
+     * @inheritdoc
+     */
     public function getCallback()
     {
         return $this->timer->getCallback();
     }
 
+    /**
+     * @inheritdoc
+     */
     public function getInterval()
     {
         return $this->timer->getInterval();
     }
 
+    /**
+     * @inheritdoc
+     */
     public function isPeriodic()
     {
         return $this->timer->isPeriodic();
     }
 
+    /**
+     * @inheritdoc
+     */
     public function setData($data)
     {
         $this->data = $data;
     }
 
+    /**
+     * @inheritdoc
+     */
     public function getData()
     {
         return $this->data;
     }
 
+    /**
+     * @inheritdoc
+     */
     public function isActive()
     {
         return $this->timer->isPending();
     }
 
+    /**
+     * @inheritdoc
+     */
     public function cancel()
     {
         $this->timer->cancel();

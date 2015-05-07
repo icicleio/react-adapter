@@ -25,9 +25,8 @@ class ReactLoop implements \React\EventLoop\LoopInterface
     {
         $id = (int) $stream;
 
-        $listener = function ($stream) use ($listener) {
+        $listener = function ($stream) use ($listener, $id) {
             $listener($stream, $this);
-            $id = (int) $stream;
             if (isset($this->polls[$id])) {
                 $this->polls[$id]->listen();
             }
@@ -38,7 +37,7 @@ class ReactLoop implements \React\EventLoop\LoopInterface
         } else {
             $poll = Loop::poll($stream, $listener);
             $poll->listen();
-            $this->polls[(int) $stream] = $poll;
+            $this->polls[$id] = $poll;
         }
     }
 
@@ -62,9 +61,8 @@ class ReactLoop implements \React\EventLoop\LoopInterface
     {
         $id = (int) $stream;
 
-        $listener = function ($stream) use ($listener) {
+        $listener = function ($stream) use ($listener, $id) {
             $listener($stream, $this);
-            $id = (int) $stream;
             if (isset($this->awaits[$id])) {
                 $this->awaits[$id]->listen();
             }
