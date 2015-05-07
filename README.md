@@ -3,7 +3,7 @@
 [![@icicleio on Twitter](https://img.shields.io/badge/twitter-%40icicleio-5189c7.svg?style=flat-square)](https://twitter.com/icicleio)
 [![Build Status](https://img.shields.io/travis/icicleio/ReactAdaptor/master.svg?style=flat-square)](https://travis-ci.org/icicleio/ReactAdaptor)
 [![Coverage Status](https://img.shields.io/coveralls/icicleio/ReactAdaptor.svg?style=flat-square)](https://coveralls.io/r/icicleio/ReactAdaptor)
-[![Semantic Version](https://img.shields.io/badge/semver-v0.1.0-yellow.svg?style=flat-square)](http://semver.org)
+[![Semantic Version](https://img.shields.io/badge/semver-v0.1.1-yellow.svg?style=flat-square)](http://semver.org)
 [![Apache 2 License](https://img.shields.io/packagist/l/icicleio/react-adaptor.svg?style=flat-square)](LICENSE)
 
 [![Join the chat at https://gitter.im/icicleio/Icicle](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/icicleio/Icicle)
