@@ -11,11 +11,10 @@
     convertWarningsToExceptions="true"
     processIsolation="false"
     stopOnFailure="false"
-    strict="true"
 >
     <testsuites>
         <testsuite name="Icicle React Adaptor">
-            <directory phpVersion="5.4.0" phpVersionOperator=">=">tests/ReactAdaptor</directory>
+            <directory>tests/ReactAdaptor</directory>
         </testsuite>
     </testsuites>
     <filter>

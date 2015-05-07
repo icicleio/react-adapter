@@ -41,11 +41,13 @@ You can also manually edit `composer.json` to add this library as a project requ
 
 ```php
 use Icicle\ReactAdaptor\Loop\ReactLoop;
+use Predis\Async\Client;
 
 // Create the loop adaptor.
 $loop = new ReactLoop();
 
-// $loop can now be used with any component requiring an instance of React\EventLoop\LoopInterface
+// $loop can be used anywhere an instance of React\EventLoop\LoopInterface is required.
+$client = new Client('tcp://127.0.0.1:6379', $loop);
 ```
 
 ## ReactPromise
@@ -53,7 +55,9 @@ $loop = new ReactLoop();
 `Icicle\ReactAdaptor\Promise\ReactPromise` creates a promise implementing `React\Promise\ExtendedPromiseInterface` and `React\Promise\ExtendedPromiseInterface` from an Icicle promise that implements `Icicle\Promise\PromiseInterface`. This allows promises created from Icicle to be used in any component requiring a React promise.
 
 ```php
-$iciclePromise = new \Icicle\Promise\Promise(function ($resolve, $reject) { /* ... */ });
+$iciclePromise = new \Icicle\Promise\Promise(function ($resolve, $reject) {
+    // Resolver
+});
 
 $reactPromise = new \Icicle\ReactAdaptor\Promise\ReactPromise($iciclePromise);
 ```
@@ -63,9 +67,11 @@ $reactPromise = new \Icicle\ReactAdaptor\Promise\ReactPromise($iciclePromise);
 `Icicle\Promise\Promise` includes an `adapt()` method that can transform any object with a `then(callable $onFulfilled, callable $onRejected)` method into a promise implementing `Icicle\Promise\PromiseInterface`. This method can be used to convert a React promise to an Icicle promise.
 
 ```php
-$reactPromise = new \React\Promise\Promise(function ($resolve, $reject, $notify) { /* ... */ });
+$reactPromise = new \React\Promise\Promise(function ($resolve, $reject) {
+    // Resolver
+});
 
 $iciclePromise = \Icicle\Promise\Promise::adapt($reactPromise);
 ```
 
-See the [Promise API documentation](//github.com/icicleio/Icicle/tree/master/src/Promise) for more information on `Promise::adapt()`.
+See the [Promise API documentation](//github.com/icicleio/Icicle/wiki/Promises) for more information on `Promise::adapt()`.
