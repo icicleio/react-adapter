@@ -3,7 +3,7 @@
 [![@icicleio on Twitter](https://img.shields.io/badge/twitter-%40icicleio-5189c7.svg?style=flat-square)](https://twitter.com/icicleio)
 [![Build Status](https://img.shields.io/travis/icicleio/ReactAdaptor/master.svg?style=flat-square)](https://travis-ci.org/icicleio/ReactAdaptor)
 [![Coverage Status](https://img.shields.io/coveralls/icicleio/ReactAdaptor.svg?style=flat-square)](https://coveralls.io/r/icicleio/ReactAdaptor)
-[![Semantic Version](https://img.shields.io/badge/semver-v0.1.1-yellow.svg?style=flat-square)](http://semver.org)
+[![Semantic Version](https://img.shields.io/badge/semver-v0.2.0-yellow.svg?style=flat-square)](http://semver.org)
 [![Apache 2 License](https://img.shields.io/packagist/l/icicleio/react-adaptor.svg?style=flat-square)](LICENSE)
 
 [![Join the chat at https://gitter.im/icicleio/Icicle](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/icicleio/Icicle)
@@ -30,7 +30,7 @@ You can also manually edit `composer.json` to add this library as a project requ
 // composer.json
 {
     "require": {
-        "icicleio/react-adaptor": "0.1.*"
+        "icicleio/react-adaptor": "0.2.*"
     }
 }
 ```
@@ -62,16 +62,16 @@ $iciclePromise = new \Icicle\Promise\Promise(function ($resolve, $reject) {
 $reactPromise = new \Icicle\ReactAdaptor\Promise\ReactPromise($iciclePromise);
 ```
 
-## Promise::adapt()
+## Promise\adapt()
 
-`Icicle\Promise\Promise` includes an `adapt()` method that can transform any object with a `then(callable $onFulfilled, callable $onRejected)` method into a promise implementing `Icicle\Promise\PromiseInterface`. This method can be used to convert a React promise to an Icicle promise.
+The `Icicle\Promise` namespace defines a function `adapt()` that can transform any object with a `then(callable $onFulfilled, callable $onRejected)` method into a promise implementing `Icicle\Promise\PromiseInterface`. This function can be used to convert a React promise to an Icicle promise.
 
 ```php
 $reactPromise = new \React\Promise\Promise(function ($resolve, $reject) {
     // Resolver
 });
 
-$iciclePromise = \Icicle\Promise\Promise::adapt($reactPromise);
+$iciclePromise = \Icicle\Promise\adapt($reactPromise);
 ```
 
-See the [Promise API documentation](//github.com/icicleio/Icicle/wiki/Promises) for more information on `Promise::adapt()`.
+See the [Promise API documentation](//github.com/icicleio/Icicle/wiki/Promises) for more information on `Icicle\Promise\adapt()`.
