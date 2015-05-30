@@ -1,7 +1,7 @@
 <?php
 namespace Icicle\ReactAdaptor\Loop;
 
-use Icicle\Loop\Loop;
+use Icicle\Loop;
 
 /**
  * Adapts Icicle's event loop to React's event loop interface so components requiring a React loop can be used.
@@ -33,12 +33,12 @@ class ReactLoop implements \React\EventLoop\LoopInterface
         };
 
         if (isset($this->polls[$id])) {
-            $this->polls[$id]->setCallback($listener);
-        } else {
-            $poll = Loop::poll($stream, $listener);
-            $poll->listen();
-            $this->polls[$id] = $poll;
+            $this->polls[$id]->free();
         }
+
+        $poll = Loop\poll($stream, $listener);
+        $poll->listen();
+        $this->polls[$id] = $poll;
     }
 
     /**
@@ -69,12 +69,12 @@ class ReactLoop implements \React\EventLoop\LoopInterface
         };
 
         if (isset($this->awaits[$id])) {
-            $this->awaits[$id]->setCallback($listener);
-        } else {
-            $await = Loop::await($stream, $listener);
-            $await->listen();
-            $this->awaits[$id] = $await;
+            $this->awaits[$id]->free();
         }
+
+        $await = Loop\await($stream, $listener);
+        $await->listen();
+        $this->awaits[$id] = $await;
     }
 
     /**
@@ -108,7 +108,7 @@ class ReactLoop implements \React\EventLoop\LoopInterface
             $callback($timer);
         };
 
-        return $timer = new ReactTimer($this, Loop::timer($interval, $callback));
+        return $timer = new ReactTimer($this, Loop\timer($interval, $callback));
     }
 
     /**
@@ -120,7 +120,7 @@ class ReactLoop implements \React\EventLoop\LoopInterface
             $callback($timer);
         };
 
-        return $timer = new ReactTimer($this, Loop::periodic($interval, $callback));
+        return $timer = new ReactTimer($this, Loop\periodic($interval, $callback));
     }
 
     /**
@@ -146,7 +146,7 @@ class ReactLoop implements \React\EventLoop\LoopInterface
      */
     public function nextTick(callable $listener)
     {
-        Loop::schedule($listener, $this);
+        Loop\schedule($listener, $this);
     }
 
     /**
@@ -154,7 +154,7 @@ class ReactLoop implements \React\EventLoop\LoopInterface
      */
     public function futureTick(callable $listener)
     {
-        Loop::immediate($listener, $this);
+        Loop\immediate($listener, $this);
     }
 
     /**
@@ -162,7 +162,7 @@ class ReactLoop implements \React\EventLoop\LoopInterface
      */
     public function tick()
     {
-        Loop::tick();
+        Loop\tick();
     }
 
     /**
@@ -170,7 +170,7 @@ class ReactLoop implements \React\EventLoop\LoopInterface
      */
     public function run()
     {
-        Loop::run();
+        Loop\run();
     }
 
     /**
@@ -178,6 +178,6 @@ class ReactLoop implements \React\EventLoop\LoopInterface
      */
     public function stop()
     {
-        Loop::stop();
+        Loop\stop();
     }
 }

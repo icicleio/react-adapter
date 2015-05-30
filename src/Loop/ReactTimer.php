@@ -43,7 +43,7 @@ class ReactTimer implements \React\EventLoop\Timer\TimerInterface
      */
     public function getCallback()
     {
-        return $this->timer->getCallback();
+        return $this->timer;
     }
 
     /**
@@ -91,6 +91,6 @@ class ReactTimer implements \React\EventLoop\Timer\TimerInterface
      */
     public function cancel()
     {
-        $this->timer->cancel();
+        $this->timer->stop();
     }
 }

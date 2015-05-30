@@ -2,7 +2,7 @@
 namespace Icicle\Tests\ReactAdaptor\Loop;
 
 use Icicle\ReactAdaptor\Loop\ReactTimer;
-use Icicle\Tests\TestCase;
+use Icicle\Tests\ReactAdaptor\TestCase;
 
 class ReactTimerTest extends TestCase
 {
@@ -24,8 +24,11 @@ class ReactTimerTest extends TestCase
         $timer->method('getLoop')
             ->will($this->returnValue($loop));
 
-        $timer->method('getCallback')
-            ->will($this->returnValue($callback));
+        $timer->method('__invoke')
+            ->will($this->returnCallback($callback));
+
+        $timer->method('call')
+            ->will($this->returnCallback($callback));
 
         $timer->method('getInterval')
             ->will($this->returnValue($interval));
@@ -40,7 +43,7 @@ class ReactTimerTest extends TestCase
                 return $pending;
             }));
 
-        $timer->method('cancel')
+        $timer->method('stop')
             ->will($this->returnCallback(function () use (&$pending) {
                 $pending = false;
             }));
@@ -62,7 +65,7 @@ class ReactTimerTest extends TestCase
         $timer = $this->createTimer($callback, self::TIMEOUT);
 
         $callback = $timer->getCallback();
-        $callback($timer); // Asserts that the callback is called, not that it is identical.
+        $callback(); // Asserts that the callback is called, not that it is identical.
     }
 
     public function testGetInterval()

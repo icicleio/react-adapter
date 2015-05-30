@@ -1,9 +1,9 @@
 <?php
 namespace Icicle\Tests\ReactAdaptor\Loop;
 
-use Icicle\Loop\Loop;
+use Icicle\Loop;
 use Icicle\ReactAdaptor\Loop\ReactLoop;
-use Icicle\Tests\TestCase;
+use Icicle\Tests\ReactAdaptor\TestCase;
 
 class ReactLoopTest extends TestCase
 {
@@ -24,7 +24,7 @@ class ReactLoopTest extends TestCase
 
     public function tearDown()
     {
-        Loop::clear();
+        Loop\clear();
     }
 
     /**
