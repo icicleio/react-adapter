@@ -19,7 +19,7 @@ class ReactLoop implements \React\EventLoop\LoopInterface
     private $awaits = [];
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function addReadStream($stream, callable $listener)
     {
@@ -42,7 +42,7 @@ class ReactLoop implements \React\EventLoop\LoopInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function removeReadStream($stream)
     {
@@ -55,7 +55,7 @@ class ReactLoop implements \React\EventLoop\LoopInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function addWriteStream($stream, callable $listener)
     {
@@ -78,7 +78,7 @@ class ReactLoop implements \React\EventLoop\LoopInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function removeWriteStream($stream)
     {
@@ -91,7 +91,7 @@ class ReactLoop implements \React\EventLoop\LoopInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function removeStream($stream)
     {
@@ -100,7 +100,7 @@ class ReactLoop implements \React\EventLoop\LoopInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function addTimer($interval, callable $callback)
     {
@@ -112,7 +112,7 @@ class ReactLoop implements \React\EventLoop\LoopInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function addPeriodicTimer($interval, callable $callback)
     {
@@ -124,7 +124,7 @@ class ReactLoop implements \React\EventLoop\LoopInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      * @codeCoverageIgnore
      */
     public function cancelTimer(\React\EventLoop\Timer\TimerInterface $timer)
@@ -133,7 +133,7 @@ class ReactLoop implements \React\EventLoop\LoopInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      * @codeCoverageIgnore
      */
     public function isTimerActive(\React\EventLoop\Timer\TimerInterface $timer)
@@ -142,7 +142,7 @@ class ReactLoop implements \React\EventLoop\LoopInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function nextTick(callable $listener)
     {
@@ -150,7 +150,7 @@ class ReactLoop implements \React\EventLoop\LoopInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function futureTick(callable $listener)
     {
@@ -158,7 +158,7 @@ class ReactLoop implements \React\EventLoop\LoopInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function tick()
     {
@@ -166,7 +166,7 @@ class ReactLoop implements \React\EventLoop\LoopInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function run()
     {
@@ -174,7 +174,7 @@ class ReactLoop implements \React\EventLoop\LoopInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function stop()
     {

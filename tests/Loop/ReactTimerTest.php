@@ -9,9 +9,9 @@ class ReactTimerTest extends TestCase
     const TIMEOUT = 0.1;
 
     /**
-     * @param   callable $callback
-     * @param   float|int $interval
-     * @param   bool $periodic
+     * @param callable $callback
+     * @param float|int $interval
+     * @param bool $periodic
      *
      * @return \Icicle\ReactAdapter\Loop\ReactTimer
      */

@@ -21,8 +21,8 @@ class ReactTimer implements \React\EventLoop\Timer\TimerInterface
     private $data;
 
     /**
-     * @param   \Icicle\ReactAdapter\Loop\ReactLoop $loop
-     * @param   \Icicle\Loop\Events\TimerInterface $timer
+     * @param \Icicle\ReactAdapter\Loop\ReactLoop $loop
+     * @param \Icicle\Loop\Events\TimerInterface $timer
      */
     public function __construct(ReactLoop $loop, TimerInterface $timer)
     {
@@ -31,7 +31,7 @@ class ReactTimer implements \React\EventLoop\Timer\TimerInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getLoop()
     {
@@ -39,7 +39,7 @@ class ReactTimer implements \React\EventLoop\Timer\TimerInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getCallback()
     {
@@ -47,7 +47,7 @@ class ReactTimer implements \React\EventLoop\Timer\TimerInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getInterval()
     {
@@ -55,7 +55,7 @@ class ReactTimer implements \React\EventLoop\Timer\TimerInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function isPeriodic()
     {
@@ -63,7 +63,7 @@ class ReactTimer implements \React\EventLoop\Timer\TimerInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function setData($data)
     {
@@ -71,7 +71,7 @@ class ReactTimer implements \React\EventLoop\Timer\TimerInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getData()
     {
@@ -79,7 +79,7 @@ class ReactTimer implements \React\EventLoop\Timer\TimerInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function isActive()
     {
@@ -87,7 +87,7 @@ class ReactTimer implements \React\EventLoop\Timer\TimerInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function cancel()
     {

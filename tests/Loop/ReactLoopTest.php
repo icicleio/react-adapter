@@ -28,7 +28,7 @@ class ReactLoopTest extends TestCase
     }
 
     /**
-     * @return  \Icicle\ReactAdapter\Loop\ReactLoop
+     * @return \Icicle\ReactAdapter\Loop\ReactLoop
      */
     protected function createLoop()
     {
@@ -36,7 +36,7 @@ class ReactLoopTest extends TestCase
     }
 
     /**
-     * @return  resource[]
+     * @return resource[]
      */
     public function createSockets()
     {

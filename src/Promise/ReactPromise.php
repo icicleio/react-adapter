@@ -6,7 +6,7 @@ use Icicle\Promise\PromiseInterface;
 class ReactPromise extends \React\Promise\LazyPromise
 {
     /**
-     * @param   \Icicle\Promise\PromiseInterface $promise
+     * @param \Icicle\Promise\PromiseInterface $promise
      */
     public function __construct(PromiseInterface $promise)
     {
