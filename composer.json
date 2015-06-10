@@ -15,17 +15,16 @@
         }
     ],
     "require": {
-        "icicleio/icicle": "~0.5",
-        "react/event-loop": "~0.4",
-        "react/promise": "~2.2"
+        "icicleio/icicle": "^0.5",
+        "react/event-loop": "^0.4",
+        "react/promise": "^2.2"
     },
     "require-dev": {
-        "phpunit/phpunit": "~4",
-        "satooshi/php-coveralls": "dev-master"
+        "phpunit/phpunit": "^4.6"
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "0.2-dev"
+            "dev-master": "0.3-dev"
         }
     },
     "autoload": {
