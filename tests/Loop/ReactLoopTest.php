@@ -1,9 +1,9 @@
 <?php
-namespace Icicle\Tests\ReactAdaptor\Loop;
+namespace Icicle\Tests\ReactAdapter\Loop;
 
 use Icicle\Loop;
-use Icicle\ReactAdaptor\Loop\ReactLoop;
-use Icicle\Tests\ReactAdaptor\TestCase;
+use Icicle\ReactAdapter\Loop\ReactLoop;
+use Icicle\Tests\ReactAdapter\TestCase;
 
 class ReactLoopTest extends TestCase
 {
@@ -13,7 +13,7 @@ class ReactLoopTest extends TestCase
     const CHUNK_SIZE = 8192;
 
     /**
-     * @var \Icicle\ReactAdaptor\Loop\ReactLoop;
+     * @var \Icicle\ReactAdapter\Loop\ReactLoop;
      */
     protected $loop;
 
@@ -28,7 +28,7 @@ class ReactLoopTest extends TestCase
     }
 
     /**
-     * @return  \Icicle\ReactAdaptor\Loop\ReactLoop
+     * @return  \Icicle\ReactAdapter\Loop\ReactLoop
      */
     protected function createLoop()
     {
@@ -327,7 +327,7 @@ class ReactLoopTest extends TestCase
 
         $timer = $this->loop->addTimer(self::TIMEOUT, $callback);
 
-        $this->assertInstanceOf('Icicle\ReactAdaptor\Loop\ReactTimer', $timer);
+        $this->assertInstanceOf('Icicle\ReactAdapter\Loop\ReactTimer', $timer);
 
         $this->assertTrue($timer->isActive());
 
@@ -359,7 +359,7 @@ class ReactLoopTest extends TestCase
 
         $timer = $this->loop->addPeriodicTimer(self::TIMEOUT, $callback);
 
-        $this->assertInstanceOf('Icicle\ReactAdaptor\Loop\ReactTimer', $timer);
+        $this->assertInstanceOf('Icicle\ReactAdapter\Loop\ReactTimer', $timer);
 
         $this->loop->addTimer(self::TIMEOUT * 3 + self::RUNTIME, function () use ($timer) {
             $timer->cancel();

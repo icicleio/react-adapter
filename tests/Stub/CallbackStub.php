@@ -1,5 +1,5 @@
 <?php
-namespace Icicle\Tests\ReactAdaptor\Stub;
+namespace Icicle\Tests\ReactAdapter\Stub;
 
 class CallbackStub
 {

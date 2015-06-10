@@ -1,5 +1,9 @@
 # Changelog
 
+### v0.3.0
+
+- Changed named to ReactAdapter.
+
 ### v0.2.0
 
 - Changes

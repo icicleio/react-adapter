@@ -1,5 +1,5 @@
 <?php
-namespace Icicle\Tests\ReactAdaptor;
+namespace Icicle\Tests\ReactAdapter;
 
 /**
  * Abstract test class with methods for creating callbacks and asserting runtimes.
@@ -17,7 +17,7 @@ abstract class TestCase extends \PHPUnit_Framework_TestCase
      */
     public function createCallback($count)
     {
-        $mock = $this->getMock('Icicle\Tests\ReactAdaptor\Stub\CallbackStub');
+        $mock = $this->getMock('Icicle\Tests\ReactAdapter\Stub\CallbackStub');
         
         $mock->expects($this->exactly($count))
              ->method('__invoke');

@@ -1,11 +1,11 @@
 <?php
-namespace Icicle\Tests\ReactAdaptor\Promise;
+namespace Icicle\Tests\ReactAdapter\Promise;
 
 use Exception;
 use Icicle\Loop;
 use Icicle\Promise;
-use Icicle\ReactAdaptor\Promise\ReactPromise;
-use Icicle\Tests\ReactAdaptor\TestCase;
+use Icicle\ReactAdapter\Promise\ReactPromise;
+use Icicle\Tests\ReactAdapter\TestCase;
 
 class ReactPromiseTest extends TestCase
 {

@@ -1,5 +1,5 @@
 <?php
-namespace Icicle\ReactAdaptor\Promise;
+namespace Icicle\ReactAdapter\Promise;
 
 use Icicle\Promise\PromiseInterface;
 

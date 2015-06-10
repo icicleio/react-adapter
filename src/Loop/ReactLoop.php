@@ -1,5 +1,5 @@
 <?php
-namespace Icicle\ReactAdaptor\Loop;
+namespace Icicle\ReactAdapter\Loop;
 
 use Icicle\Loop;
 
@@ -129,7 +129,7 @@ class ReactLoop implements \React\EventLoop\LoopInterface
      */
     public function cancelTimer(\React\EventLoop\Timer\TimerInterface $timer)
     {
-        // No-op since the ReactTimer adaptor class will not call this method.
+        // No-op since the ReactTimer adapter class will not call this method.
     }
 
     /**
@@ -138,7 +138,7 @@ class ReactLoop implements \React\EventLoop\LoopInterface
      */
     public function isTimerActive(\React\EventLoop\Timer\TimerInterface $timer)
     {
-        // No-op since the ReactTimer adaptor class will not call this method.
+        // No-op since the ReactTimer adapter class will not call this method.
     }
 
     /**

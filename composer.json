@@ -1,8 +1,8 @@
 {
-    "name": "icicleio/react-adaptor",
+    "name": "icicleio/react-adapter",
     "description": "Adapts the event loop and promises of Icicle to interfaces compatible with components built for React.",
     "keywords": [
-        "adaptor",
+        "adapter",
         "loop",
         "promise"
     ],
@@ -30,12 +30,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Icicle\\ReactAdaptor\\": "src"
+            "Icicle\\ReactAdapter\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Icicle\\Tests\\ReactAdaptor\\": "tests"
+            "Icicle\\Tests\\ReactAdapter\\": "tests"
         }
     }
 }
