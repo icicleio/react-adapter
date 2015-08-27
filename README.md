@@ -1,12 +1,10 @@
 # React Adapter for Icicle
 
 [![@icicleio on Twitter](https://img.shields.io/badge/twitter-%40icicleio-5189c7.svg?style=flat-square)](https://twitter.com/icicleio)
-[![Build Status](https://img.shields.io/travis/icicleio/ReactAdapter/master.svg?style=flat-square)](https://travis-ci.org/icicleio/ReactAdapter)
-[![Coverage Status](https://img.shields.io/coveralls/icicleio/ReactAdapter.svg?style=flat-square)](https://coveralls.io/r/icicleio/ReactAdapter)
-[![Semantic Version](https://img.shields.io/github/release/icicleio/ReactAdapter.svg?style=flat-square)](http://semver.org)
+[![Build Status](https://img.shields.io/travis/icicleio/react-adapter/master.svg?style=flat-square)](https://travis-ci.org/icicleio/react-adapter)
+[![Coverage Status](https://img.shields.io/coveralls/icicleio/react-adapter.svg?style=flat-square)](https://coveralls.io/r/icicleio/react-adapter)
+[![Semantic Version](https://img.shields.io/github/release/icicleio/react-adapter.svg?style=flat-square)](http://semver.org)
 [![Apache 2 License](https://img.shields.io/packagist/l/icicleio/react-adapter.svg?style=flat-square)](LICENSE)
-
-[![Join the chat at https://gitter.im/icicleio/Icicle](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/icicleio/Icicle)
 
 This library facilitates interoperability between components built for [React](http://reactphp.org) and [Icicle](http://icicle.io). This library provides an adapter between the differing event loop and promise implementations of the two libraries.
 
@@ -74,4 +72,4 @@ $reactPromise = new \React\Promise\Promise(function ($resolve, $reject) {
 $iciclePromise = \Icicle\Promise\adapt($reactPromise);
 ```
 
-See the [Promise API documentation](//github.com/icicleio/Icicle/wiki/Promises) for more information on `Icicle\Promise\adapt()`.
+See the [Promise API documentation](//github.com/icicleio/icicle/wiki/Promises) for more information on `Icicle\Promise\adapt()`.

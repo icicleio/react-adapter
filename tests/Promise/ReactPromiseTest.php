@@ -53,7 +53,7 @@ class ReactPromiseTest extends TestCase
         $value = 1;
 
         $promise = new Promise\Promise(function ($resolve, $reject) use ($value) {
-            Loop\schedule($resolve, $value);
+            Loop\queue($resolve, $value);
         });
 
         $promise = new ReactPromise($promise);
@@ -72,7 +72,7 @@ class ReactPromiseTest extends TestCase
         $exception = new Exception();
 
         $promise = new Promise\Promise(function ($resolve, $reject) use ($exception) {
-            Loop\schedule($reject, $exception);
+            Loop\queue($reject, $exception);
         });
 
         $promise = new ReactPromise($promise);

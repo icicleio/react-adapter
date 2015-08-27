@@ -2,11 +2,13 @@
 namespace Icicle\ReactAdapter\Loop;
 
 use Icicle\Loop;
+use React\EventLoop\LoopInterface;
+use React\EventLoop\Timer\TimerInterface;
 
 /**
  * Adapts Icicle's event loop to React's event loop interface so components requiring a React loop can be used.
  */
-class ReactLoop implements \React\EventLoop\LoopInterface
+class ReactLoop implements LoopInterface
 {
     /**
      * @var \Icicle\Loop\Events\SocketEventInterface[]
@@ -127,7 +129,7 @@ class ReactLoop implements \React\EventLoop\LoopInterface
      * {@inheritdoc}
      * @codeCoverageIgnore
      */
-    public function cancelTimer(\React\EventLoop\Timer\TimerInterface $timer)
+    public function cancelTimer(TimerInterface $timer)
     {
         // No-op since the ReactTimer adapter class will not call this method.
     }
@@ -136,7 +138,7 @@ class ReactLoop implements \React\EventLoop\LoopInterface
      * {@inheritdoc}
      * @codeCoverageIgnore
      */
-    public function isTimerActive(\React\EventLoop\Timer\TimerInterface $timer)
+    public function isTimerActive(TimerInterface $timer)
     {
         // No-op since the ReactTimer adapter class will not call this method.
     }
@@ -146,7 +148,7 @@ class ReactLoop implements \React\EventLoop\LoopInterface
      */
     public function nextTick(callable $listener)
     {
-        Loop\schedule($listener, $this);
+        Loop\queue($listener, $this);
     }
 
     /**

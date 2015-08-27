@@ -15,7 +15,7 @@
         }
     ],
     "require": {
-        "icicleio/icicle": "^0.5",
+        "icicleio/icicle": "^0.8",
         "react/event-loop": "^0.4",
         "react/promise": "^2.2"
     },

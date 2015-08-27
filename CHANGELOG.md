@@ -1,8 +1,16 @@
 # Changelog
 
+### v0.3.1
+
+- Updates for the latest version of Icicle.
+
+---
+
 ### v0.3.0
 
 - Changed named to ReactAdapter.
+
+---
 
 ### v0.2.0
 

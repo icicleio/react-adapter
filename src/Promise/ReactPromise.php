@@ -2,8 +2,9 @@
 namespace Icicle\ReactAdapter\Promise;
 
 use Icicle\Promise\PromiseInterface;
+use React\Promise\LazyPromise;
 
-class ReactPromise extends \React\Promise\LazyPromise
+class ReactPromise extends LazyPromise
 {
     /**
      * @param \Icicle\Promise\PromiseInterface $promise
