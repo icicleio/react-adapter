@@ -4,7 +4,7 @@
 [![Build Status](https://img.shields.io/travis/icicleio/react-adapter/master.svg?style=flat-square)](https://travis-ci.org/icicleio/react-adapter)
 [![Coverage Status](https://img.shields.io/coveralls/icicleio/react-adapter.svg?style=flat-square)](https://coveralls.io/r/icicleio/react-adapter)
 [![Semantic Version](https://img.shields.io/github/release/icicleio/react-adapter.svg?style=flat-square)](http://semver.org)
-[![Apache 2 License](https://img.shields.io/packagist/l/icicleio/react-adapter.svg?style=flat-square)](LICENSE)
+[![MIT License](https://img.shields.io/packagist/l/icicleio/react-adapter.svg?style=flat-square)](LICENSE)
 
 This library facilitates interoperability between components built for [React](http://reactphp.org) and [Icicle](http://icicle.io). This library provides an adapter between the differing event loop and promise implementations of the two libraries.
 
