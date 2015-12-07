@@ -3,6 +3,11 @@
 
 ### v0.4.0
 
+- Moved all classes to a single namespace, `Icicle\ReactAdapter`:
+    - `Icicle\ReactAdapter\ReactLoop`
+    - `Icicle\ReactAdapter\ReactTimer`
+    - `Icicle\ReactAdapter\ReactPromise`
+
 - Updates for name changes made in Icicle v0.9.
 
 ---

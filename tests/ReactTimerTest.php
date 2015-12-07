@@ -1,10 +1,9 @@
 <?php
-namespace Icicle\Tests\ReactAdapter\Loop;
+namespace Icicle\Tests\ReactAdapter;
 
 use Icicle\Loop\Watcher\Timer;
-use Icicle\ReactAdapter\Loop\ReactLoop;
-use Icicle\ReactAdapter\Loop\ReactTimer;
-use Icicle\Tests\ReactAdapter\TestCase;
+use Icicle\ReactAdapter\ReactLoop;
+use Icicle\ReactAdapter\ReactTimer;
 
 class ReactTimerTest extends TestCase
 {
@@ -15,7 +14,7 @@ class ReactTimerTest extends TestCase
      * @param float|int $interval
      * @param bool $periodic
      *
-     * @return \Icicle\ReactAdapter\Loop\ReactTimer
+     * @return \Icicle\ReactAdapter\ReactTimer
      */
     public function createTimer($callback, $interval, $periodic = false)
     {

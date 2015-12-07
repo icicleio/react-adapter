@@ -1,5 +1,5 @@
 <?php
-namespace Icicle\ReactAdapter\Loop;
+namespace Icicle\ReactAdapter;
 
 use Icicle\Loop;
 use React\EventLoop\LoopInterface;

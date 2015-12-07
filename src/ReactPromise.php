@@ -1,5 +1,5 @@
 <?php
-namespace Icicle\ReactAdapter\Promise;
+namespace Icicle\ReactAdapter;
 
 use Icicle\Awaitable\Awaitable;
 use React\Promise\LazyPromise;

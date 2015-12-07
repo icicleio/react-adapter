@@ -1,11 +1,10 @@
 <?php
-namespace Icicle\Tests\ReactAdapter\Loop;
+namespace Icicle\Tests\ReactAdapter;
 
 use Icicle\Loop;
 use Icicle\Loop\SelectLoop;
-use Icicle\ReactAdapter\Loop\ReactLoop;
-use Icicle\ReactAdapter\Loop\ReactTimer;
-use Icicle\Tests\ReactAdapter\TestCase;
+use Icicle\ReactAdapter\ReactLoop;
+use Icicle\ReactAdapter\ReactTimer;
 use React\EventLoop\Timer\TimerInterface;
 
 class ReactLoopTest extends TestCase
@@ -15,7 +14,7 @@ class ReactLoopTest extends TestCase
     const CHUNK_SIZE = 8192;
 
     /**
-     * @var \Icicle\ReactAdapter\Loop\ReactLoop;
+     * @var \Icicle\ReactAdapter\ReactLoop;
      */
     protected $loop;
 
@@ -26,7 +25,7 @@ class ReactLoopTest extends TestCase
     }
 
     /**
-     * @return \Icicle\ReactAdapter\Loop\ReactLoop
+     * @return \Icicle\ReactAdapter\ReactLoop
      */
     protected function createLoop()
     {
