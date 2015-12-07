@@ -2,23 +2,25 @@
 namespace Icicle\Tests\ReactAdapter\Promise;
 
 use Exception;
+use Icicle\Awaitable;
+use Icicle\Awaitable\Promise;
 use Icicle\Loop;
-use Icicle\Promise;
+use Icicle\Loop\SelectLoop;
 use Icicle\ReactAdapter\Promise\ReactPromise;
 use Icicle\Tests\ReactAdapter\TestCase;
 
 class ReactPromiseTest extends TestCase
 {
-    public function tearDown()
+    public function setUp()
     {
-        Loop\clear();
+        Loop\loop(new SelectLoop());
     }
 
     public function testConstructWithFulfilled()
     {
         $value = 1;
 
-        $promise = Promise\resolve($value);
+        $promise = Awaitable\resolve($value);
 
         $promise = new ReactPromise($promise);
 
@@ -35,7 +37,7 @@ class ReactPromiseTest extends TestCase
     {
         $exception = new Exception();
 
-        $promise = Promise\reject($exception);
+        $promise = Awaitable\reject($exception);
 
         $promise = new ReactPromise($promise);
 
@@ -52,7 +54,7 @@ class ReactPromiseTest extends TestCase
     {
         $value = 1;
 
-        $promise = new Promise\Promise(function ($resolve, $reject) use ($value) {
+        $promise = new Promise(function ($resolve, $reject) use ($value) {
             Loop\queue($resolve, $value);
         });
 
@@ -71,7 +73,7 @@ class ReactPromiseTest extends TestCase
     {
         $exception = new Exception();
 
-        $promise = new Promise\Promise(function ($resolve, $reject) use ($exception) {
+        $promise = new Promise(function ($resolve, $reject) use ($exception) {
             Loop\queue($reject, $exception);
         });
 
@@ -88,7 +90,7 @@ class ReactPromiseTest extends TestCase
 
     public function testCancel()
     {
-        $promise = new Promise\Promise(function ($resolve, $reject) {});
+        $promise = new Promise(function ($resolve, $reject) {});
 
         $promise->done($this->createCallback(0), $this->createCallback(1));
 

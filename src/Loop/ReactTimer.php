@@ -1,7 +1,7 @@
 <?php
 namespace Icicle\ReactAdapter\Loop;
 
-use Icicle\Loop\Events\TimerInterface;
+use Icicle\Loop\Watcher\Timer;
 
 class ReactTimer implements \React\EventLoop\Timer\TimerInterface
 {
@@ -11,7 +11,7 @@ class ReactTimer implements \React\EventLoop\Timer\TimerInterface
     private $loop;
 
     /**
-     * @var \Icicle\Loop\Events\TimerInterface
+     * @var \Icicle\Loop\Watcher\Timer
      */
     private $timer;
 
@@ -22,9 +22,9 @@ class ReactTimer implements \React\EventLoop\Timer\TimerInterface
 
     /**
      * @param \Icicle\ReactAdapter\Loop\ReactLoop $loop
-     * @param \Icicle\Loop\Events\TimerInterface $timer
+     * @param \Icicle\Loop\Watcher\Timer $timer
      */
-    public function __construct(ReactLoop $loop, TimerInterface $timer)
+    public function __construct(ReactLoop $loop, Timer $timer)
     {
         $this->loop = $loop;
         $this->timer = $timer;

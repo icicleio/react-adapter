@@ -2,13 +2,15 @@
 namespace Icicle\Tests\ReactAdapter\Loop;
 
 use Icicle\Loop;
+use Icicle\Loop\SelectLoop;
 use Icicle\ReactAdapter\Loop\ReactLoop;
+use Icicle\ReactAdapter\Loop\ReactTimer;
 use Icicle\Tests\ReactAdapter\TestCase;
+use React\EventLoop\Timer\TimerInterface;
 
 class ReactLoopTest extends TestCase
 {
     const TIMEOUT = 0.1;
-    const RUNTIME = 0.05;
     const WRITE_STRING = 'abcdefghijklmnopqrstuvwxyz';
     const CHUNK_SIZE = 8192;
 
@@ -19,12 +21,8 @@ class ReactLoopTest extends TestCase
 
     public function setUp()
     {
+        Loop\loop(new SelectLoop());
         $this->loop = $this->createLoop();
-    }
-
-    public function tearDown()
-    {
-        Loop\clear();
     }
 
     /**
@@ -48,7 +46,7 @@ class ReactLoopTest extends TestCase
 
     public function testNoBlockingOnEmptyLoop()
     {
-        $this->assertRunTimeLessThan([$this->loop, 'run'], self::RUNTIME);
+        $this->assertRunTimeLessThan([$this->loop, 'run'], self::RUNTIME_PRECISION);
     }
 
     public function testNextTick()
@@ -323,15 +321,15 @@ class ReactLoopTest extends TestCase
     {
         $callback = $this->createCallback(1);
         $callback->method('__invoke')
-            ->with($this->isInstanceOf('React\EventLoop\Timer\TimerInterface'));
+            ->with($this->isInstanceOf(TimerInterface::class));
 
         $timer = $this->loop->addTimer(self::TIMEOUT, $callback);
 
-        $this->assertInstanceOf('Icicle\ReactAdapter\Loop\ReactTimer', $timer);
+        $this->assertInstanceOf(ReactTimer::class, $timer);
 
         $this->assertTrue($timer->isActive());
 
-        $this->assertRunTimeBetween([$this->loop, 'run'], self::TIMEOUT, self::TIMEOUT + self::RUNTIME);
+        $this->assertRunTimeGreaterThan([$this->loop, 'run'], self::TIMEOUT - self::RUNTIME_PRECISION);
 
         $this->assertFalse($timer->isActive());
     }
@@ -355,17 +353,17 @@ class ReactLoopTest extends TestCase
     {
         $callback = $this->createCallback(3);
         $callback->method('__invoke')
-            ->with($this->isInstanceOf('React\EventLoop\Timer\TimerInterface'));
+            ->with($this->isInstanceOf(TimerInterface::class));
 
         $timer = $this->loop->addPeriodicTimer(self::TIMEOUT, $callback);
 
-        $this->assertInstanceOf('Icicle\ReactAdapter\Loop\ReactTimer', $timer);
+        $this->assertInstanceOf(ReactTimer::class, $timer);
 
-        $this->loop->addTimer(self::TIMEOUT * 3 + self::RUNTIME, function () use ($timer) {
+        $this->loop->addTimer(self::TIMEOUT * 3.5, function () use ($timer) {
             $timer->cancel();
         });
 
-        $this->assertRunTimeLessThan([$this->loop, 'run'], self::TIMEOUT * 3 + self::RUNTIME * 2);
+        $this->assertRunTimeLessThan([$this->loop, 'run'], self::TIMEOUT * 3 + self::RUNTIME_PRECISION);
 
         $this->assertFalse($timer->isActive());
     }
@@ -380,6 +378,6 @@ class ReactLoopTest extends TestCase
 
         $this->loop->addTimer(self::TIMEOUT, $this->createCallback(0));
 
-        $this->assertRunTimeLessThan([$this->loop, 'run'], self::RUNTIME);
+        $this->assertRunTimeLessThan([$this->loop, 'run'], self::RUNTIME_PRECISION);
     }
 }

@@ -1,6 +1,8 @@
 <?php
 namespace Icicle\Tests\ReactAdapter\Loop;
 
+use Icicle\Loop\Watcher\Timer;
+use Icicle\ReactAdapter\Loop\ReactLoop;
 use Icicle\ReactAdapter\Loop\ReactTimer;
 use Icicle\Tests\ReactAdapter\TestCase;
 
@@ -17,9 +19,11 @@ class ReactTimerTest extends TestCase
      */
     public function createTimer($callback, $interval, $periodic = false)
     {
-        $loop = $this->getMock('Icicle\ReactAdapter\Loop\ReactLoop');
+        $loop = $this->getMock(ReactLoop::class);
 
-        $timer = $this->getMock('Icicle\Loop\Events\TimerInterface');
+        $timer = $this->getMockBuilder(Timer::class)
+            ->disableOriginalConstructor()
+            ->getMock();
 
         $timer->method('getLoop')
             ->will($this->returnValue($loop));
@@ -55,7 +59,7 @@ class ReactTimerTest extends TestCase
     {
         $timer = $this->createTimer($this->createCallback(0), self::TIMEOUT);
 
-        $this->assertInstanceOf('Icicle\ReactAdapter\Loop\ReactLoop', $timer->getLoop());
+        $this->assertInstanceOf(ReactLoop::class, $timer->getLoop());
     }
 
     public function testGetCallback()

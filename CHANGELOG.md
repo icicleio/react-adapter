@@ -1,5 +1,12 @@
 # Changelog
 
+
+### v0.4.0
+
+- Updates for name changes made in Icicle v0.9.
+
+---
+
 ### v0.3.1
 
 - Updates for the latest version of Icicle.

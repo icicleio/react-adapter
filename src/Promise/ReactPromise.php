@@ -1,23 +1,24 @@
 <?php
 namespace Icicle\ReactAdapter\Promise;
 
-use Icicle\Promise\PromiseInterface;
+use Icicle\Awaitable\Awaitable;
 use React\Promise\LazyPromise;
+use React\Promise\Promise;
 
 class ReactPromise extends LazyPromise
 {
     /**
-     * @param \Icicle\Promise\PromiseInterface $promise
+     * @param \Icicle\Awaitable\Awaitable $awaitable
      */
-    public function __construct(PromiseInterface $promise)
+    public function __construct(Awaitable $awaitable)
     {
-        parent::__construct(function () use ($promise) {
-            return new \React\Promise\Promise(
-                function ($resolve, $reject) use ($promise) {
-                    $promise->done($resolve, $reject);
+        parent::__construct(function () use ($awaitable) {
+            return new Promise(
+                function ($resolve, $reject) use ($awaitable) {
+                    $awaitable->done($resolve, $reject);
                 },
-                function () use ($promise) {
-                    $promise->cancel();
+                function () use ($awaitable) {
+                    $awaitable->cancel();
                 }
             );
         });

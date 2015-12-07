@@ -11,14 +11,27 @@ use React\EventLoop\Timer\TimerInterface;
 class ReactLoop implements LoopInterface
 {
     /**
-     * @var \Icicle\Loop\Events\SocketEventInterface[]
+     * @var \Icicle\Loop\Loop
+     */
+    private $loop;
+
+    /**
+     * @var \Icicle\Loop\Watcher\Io[]
      */
     private $polls = [];
 
     /**
-     * @var \Icicle\Loop\Events\SocketEventInterface[]
+     * @var \Icicle\Loop\Watcher\Io[]
      */
     private $awaits = [];
+
+    /**
+     * @param \Icicle\Loop\Loop|null $loop
+     */
+    public function __construct(Loop\Loop $loop = null)
+    {
+        $this->loop = $loop ?: Loop\loop();
+    }
 
     /**
      * {@inheritdoc}
@@ -29,16 +42,13 @@ class ReactLoop implements LoopInterface
 
         $listener = function ($stream) use ($listener, $id) {
             $listener($stream, $this);
-            if (isset($this->polls[$id])) {
-                $this->polls[$id]->listen();
-            }
         };
 
         if (isset($this->polls[$id])) {
             $this->polls[$id]->free();
         }
 
-        $poll = Loop\poll($stream, $listener);
+        $poll = $this->loop->poll($stream, $listener, true);
         $poll->listen();
         $this->polls[$id] = $poll;
     }
@@ -65,16 +75,13 @@ class ReactLoop implements LoopInterface
 
         $listener = function ($stream) use ($listener, $id) {
             $listener($stream, $this);
-            if (isset($this->awaits[$id])) {
-                $this->awaits[$id]->listen();
-            }
         };
 
         if (isset($this->awaits[$id])) {
             $this->awaits[$id]->free();
         }
 
-        $await = Loop\await($stream, $listener);
+        $await = $this->loop->await($stream, $listener, true);
         $await->listen();
         $this->awaits[$id] = $await;
     }
@@ -110,7 +117,7 @@ class ReactLoop implements LoopInterface
             $callback($timer);
         };
 
-        return $timer = new ReactTimer($this, Loop\timer($interval, $callback));
+        return $timer = new ReactTimer($this, $this->loop->timer($interval, false, $callback));
     }
 
     /**
@@ -122,7 +129,7 @@ class ReactLoop implements LoopInterface
             $callback($timer);
         };
 
-        return $timer = new ReactTimer($this, Loop\periodic($interval, $callback));
+        return $timer = new ReactTimer($this, $this->loop->timer($interval, true, $callback));
     }
 
     /**
@@ -148,7 +155,7 @@ class ReactLoop implements LoopInterface
      */
     public function nextTick(callable $listener)
     {
-        Loop\queue($listener, $this);
+        $this->loop->queue($listener, [$this]);
     }
 
     /**
@@ -156,7 +163,7 @@ class ReactLoop implements LoopInterface
      */
     public function futureTick(callable $listener)
     {
-        Loop\immediate($listener, $this);
+        $this->loop->immediate($listener, [$this]);
     }
 
     /**
@@ -164,7 +171,7 @@ class ReactLoop implements LoopInterface
      */
     public function tick()
     {
-        Loop\tick();
+        $this->loop->tick();
     }
 
     /**
@@ -172,7 +179,7 @@ class ReactLoop implements LoopInterface
      */
     public function run()
     {
-        Loop\run();
+        $this->loop->run();
     }
 
     /**
@@ -180,6 +187,6 @@ class ReactLoop implements LoopInterface
      */
     public function stop()
     {
-        Loop\stop();
+        $this->loop->stop();
     }
 }

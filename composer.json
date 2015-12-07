@@ -15,7 +15,7 @@
         }
     ],
     "require": {
-        "icicleio/icicle": "^0.8",
+        "icicleio/icicle": "^0.9.1",
         "react/event-loop": "^0.4",
         "react/promise": "^2.2"
     },
@@ -24,7 +24,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "0.3-dev"
+            "dev-master": "0.4-dev"
         }
     },
     "autoload": {
